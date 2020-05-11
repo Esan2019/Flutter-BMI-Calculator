@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'constants.dart';
 import 'default_card.dart';
 import 'icon_content.dart';
-
-const Color activeCardColor = Color(0xFF1D1E40);
-const Color inactiveCardColor = Color(0xFF111328);
 
 enum Gender { male, female }
 
@@ -23,6 +21,7 @@ class _InputPageState extends State<InputPage> {
     return Scaffold(
         body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Expanded(
                 child: Row(
@@ -37,8 +36,8 @@ class _InputPageState extends State<InputPage> {
                         cardChild:
                         IconContent(FontAwesomeIcons.mars, 'MASCULINO'),
                         color: selectedGender == Gender.male
-                            ? activeCardColor
-                            : inactiveCardColor,
+                            ? kActiveCardColor
+                            : kInactiveCardColor,
                       ),
                     ),
                     Expanded(
@@ -51,15 +50,32 @@ class _InputPageState extends State<InputPage> {
                         cardChild:
                         IconContent(FontAwesomeIcons.venus, 'FEMININO'),
                         color: selectedGender == Gender.female
-                            ? activeCardColor
-                            : inactiveCardColor,
+                            ? kActiveCardColor
+                            : kInactiveCardColor,
                       ),
                     )
                   ],
                 ),
               ),
               Expanded(
-                child: DefaultCard(),
+                child: DefaultCard(
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text('ALTURA', style: kTextLabel,),
+                      Row(
+                        textBaseline: TextBaseline.alphabetic,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        children: <Widget>[
+                          Text('180', style: kNumberLabel,),
+                          SizedBox(width: 3.0,),
+                          Text('cm', style: kTextLabel,),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
               ),
               Expanded(
                 child: Row(
