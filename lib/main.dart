@@ -18,5 +18,3 @@ class BmiCalculator extends StatelessWidget {
     );
   }
 }
-
-

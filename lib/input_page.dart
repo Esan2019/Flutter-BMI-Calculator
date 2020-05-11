@@ -13,9 +13,10 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-
   Gender selectedGender = Gender.male;
-  int height = 30;
+  int height = 160;
+  int weight = 60;
+  int age = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +35,8 @@ class _InputPageState extends State<InputPage> {
                             selectedGender = Gender.male;
                           });
                         },
-                        cardChild:
-                        IconContent(FontAwesomeIcons.mars, 'MASCULINO'),
+                        cardChild: IconContent(
+                            FontAwesomeIcons.mars, 'MASCULINO'),
                         color: selectedGender == Gender.male
                             ? kActiveCardColor
                             : kInactiveCardColor,
@@ -48,8 +49,8 @@ class _InputPageState extends State<InputPage> {
                             selectedGender = Gender.female;
                           });
                         },
-                        cardChild:
-                        IconContent(FontAwesomeIcons.venus, 'FEMININO'),
+                        cardChild: IconContent(
+                            FontAwesomeIcons.venus, 'FEMININO'),
                         color: selectedGender == Gender.female
                             ? kActiveCardColor
                             : kInactiveCardColor,
@@ -63,15 +64,26 @@ class _InputPageState extends State<InputPage> {
                   cardChild: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text('ALTURA', style: kTextLabel,),
+                      Text(
+                        'ALTURA',
+                        style: kTextLabel,
+                      ),
                       Row(
                         textBaseline: TextBaseline.alphabetic,
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.baseline,
                         children: <Widget>[
-                          Text(height.toString(), style: kNumberLabel,),
-                          SizedBox(width: 3.0,),
-                          Text('cm', style: kTextLabel,),
+                          Text(
+                            height.toString(),
+                            style: kNumberLabel,
+                          ),
+                          SizedBox(
+                            width: 3.0,
+                          ),
+                          Text(
+                            'cm',
+                            style: kTextLabel,
+                          ),
                         ],
                       ),
                       Slider(
@@ -94,16 +106,52 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
                   children: <Widget>[
                     Expanded(
-                      child: DefaultCard(),
+                      child: DefaultCard(
+                        cardChild: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              'PESO',
+                              style: kTextLabel,
+                            ),
+                            Text(
+                              weight.toString(),
+                              style: kNumberLabel,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[],
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                     Expanded(
-                      child: DefaultCard(),
+                      child: DefaultCard(
+                        cardChild: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              'ALTURA',
+                              style: kTextLabel,
+                            ),
+                            Text(
+                              age.toString(),
+                              style: kNumberLabel,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[],
+                            )
+                          ],
+                        ),
+                      ),
                     )
                   ],
                 ),
               ),
               Container(
-                color: Colors.blue[700],
+                color: Colors.blue[800],
                 width: double.infinity,
                 height: 80.0,
                 margin: EdgeInsets.only(top: 10.0),
