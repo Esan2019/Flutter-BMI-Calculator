@@ -7,7 +7,9 @@ void main() {
 class BmiCalculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return InputPage();
+    return MaterialApp(
+      home: InputPage(),
+    );
   }
 }
 
