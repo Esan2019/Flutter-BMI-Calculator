@@ -7,6 +7,8 @@ import 'icon_content.dart';
 const Color activeCardColor = Color(0xFF1D1E40);
 const Color inactiveCardColor = Color(0xFF111328);
 
+enum Gender { male, female }
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -14,27 +16,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
 
-  Color maleCardColor = activeCardColor;
-  Color femaleCardColor = inactiveCardColor;
-
-  // 1 = male, 2 = female
-  void updateColor(int gender) {
-    if (gender < 2) {
-      if (maleCardColor == inactiveCardColor) {
-        maleCardColor = activeCardColor;
-      }
-      if (femaleCardColor == activeCardColor) {
-        femaleCardColor = inactiveCardColor;
-      }
-    } else {
-      if (maleCardColor == activeCardColor) {
-        maleCardColor = inactiveCardColor;
-      }
-      if (femaleCardColor == inactiveCardColor) {
-        femaleCardColor = activeCardColor;
-      }
-    }
-  }
+  Gender selectedGender = Gender.male;
 
   @override
   Widget build(BuildContext context) {
@@ -49,13 +31,15 @@ class _InputPageState extends State<InputPage> {
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
-                            updateColor(1);
+                            selectedGender = Gender.male;
                           });
                         },
                         child: DefaultCard(
                           cardChild:
                           IconContent(FontAwesomeIcons.mars, 'MASCULINO'),
-                          color: maleCardColor,
+                          color: selectedGender == Gender.male
+                              ? activeCardColor
+                              : inactiveCardColor,
                         ),
                       ),
                     ),
@@ -63,13 +47,15 @@ class _InputPageState extends State<InputPage> {
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
-                            updateColor(2);
+                            selectedGender = Gender.female;
                           });
                         },
                         child: DefaultCard(
                           cardChild:
                           IconContent(FontAwesomeIcons.venus, 'FEMININO'),
-                          color: femaleCardColor,
+                          color: selectedGender == Gender.female
+                              ? activeCardColor
+                              : inactiveCardColor,
                         ),
                       ),
                     )
