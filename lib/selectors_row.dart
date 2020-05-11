@@ -47,7 +47,7 @@ class RoundIconButton extends StatelessWidget {
       onPressed: onTap,
       child: Icon(
         child,
-        color: Colors.white,
+        color: Colors.black,
       ),
     );
   }
