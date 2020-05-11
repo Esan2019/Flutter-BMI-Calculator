@@ -28,35 +28,31 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
                   children: <Widget>[
                     Expanded(
-                      child: GestureDetector(
-                        onTap: () {
+                      child: DefaultCard(
+                        onPress: () {
                           setState(() {
                             selectedGender = Gender.male;
                           });
                         },
-                        child: DefaultCard(
-                          cardChild:
-                          IconContent(FontAwesomeIcons.mars, 'MASCULINO'),
-                          color: selectedGender == Gender.male
-                              ? activeCardColor
-                              : inactiveCardColor,
-                        ),
+                        cardChild:
+                        IconContent(FontAwesomeIcons.mars, 'MASCULINO'),
+                        color: selectedGender == Gender.male
+                            ? activeCardColor
+                            : inactiveCardColor,
                       ),
                     ),
                     Expanded(
-                      child: GestureDetector(
-                        onTap: () {
+                      child: DefaultCard(
+                        onPress: () {
                           setState(() {
                             selectedGender = Gender.female;
                           });
                         },
-                        child: DefaultCard(
-                          cardChild:
-                          IconContent(FontAwesomeIcons.venus, 'FEMININO'),
-                          color: selectedGender == Gender.female
-                              ? activeCardColor
-                              : inactiveCardColor,
-                        ),
+                        cardChild:
+                        IconContent(FontAwesomeIcons.venus, 'FEMININO'),
+                        color: selectedGender == Gender.female
+                            ? activeCardColor
+                            : inactiveCardColor,
                       ),
                     )
                   ],
