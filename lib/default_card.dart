@@ -4,7 +4,7 @@ class DefaultCard extends StatelessWidget {
   final Color color;
   final Widget cardChild;
 
-  DefaultCard({this.color = const Color(0xDD1D1E33), this.cardChild});
+  DefaultCard({this.color = const Color(0xFF1D1E40), this.cardChild});
 
   @override
   Widget build(BuildContext context) {
