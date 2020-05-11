@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/selectors_row.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -114,13 +115,36 @@ class _InputPageState extends State<InputPage> {
                               'PESO',
                               style: kTextLabel,
                             ),
-                            Text(
-                              weight.toString(),
-                              style: kNumberLabel,
-                            ),
                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.baseline,
+                              textBaseline: TextBaseline.alphabetic,
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[],
+                              children: <Widget>[
+                                Text(
+                                  weight.toString(),
+                                  style: kNumberLabel,
+                                ),
+                                SizedBox(width: 3.0),
+                                Text(
+                                  'KG',
+                                  style: kTextLabel,
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            SelectorsRow(
+                              onPressAdd: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                              onPressRemove: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
                             )
                           ],
                         ),
@@ -132,16 +156,27 @@ class _InputPageState extends State<InputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              'ALTURA',
+                              'IDADE',
                               style: kTextLabel,
                             ),
                             Text(
                               age.toString(),
                               style: kNumberLabel,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[],
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            SelectorsRow(
+                              onPressRemove: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                              onPressAdd: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
                             )
                           ],
                         ),
@@ -151,7 +186,7 @@ class _InputPageState extends State<InputPage> {
                 ),
               ),
               Container(
-                color: Colors.blue[800],
+                color: kButtonColor,
                 width: double.infinity,
                 height: 80.0,
                 margin: EdgeInsets.only(top: 10.0),

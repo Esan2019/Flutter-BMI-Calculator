@@ -6,3 +6,4 @@ const TextStyle kTextLabel = TextStyle(
     fontSize: 18.0, color: Color(0xFF8D8E98), fontWeight: FontWeight.bold);
 const TextStyle kNumberLabel =
     TextStyle(fontWeight: FontWeight.w900, fontSize: 50.0);
+const Color kButtonColor = Color(0xFF005cb2);
