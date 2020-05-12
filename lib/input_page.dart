@@ -17,6 +17,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
   Gender selectedGender = Gender.male;
   int height = 160;
   int weight = 60;
@@ -201,6 +202,7 @@ class _InputPageState extends State<InputPage> {
                                 bmiResult: calc.calculateBMI(),
                                 resultText: calc.getResult(),
                                 resultTip: calc.getTip(),
+                                resultColor: calc.getResultColor(),
                               )));
                 },
               )

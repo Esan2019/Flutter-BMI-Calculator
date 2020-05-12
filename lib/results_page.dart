@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 class ResultsPage extends StatelessWidget {
   ResultsPage({@required this.bmiResult,
     @required this.resultText,
-    @required this.resultTip});
+    @required this.resultTip,
+    @required this.resultColor});
 
   final String bmiResult;
   final String resultText;
   final String resultTip;
+  final Color resultColor;
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +39,43 @@ class ResultsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 4.0, right: 4.0),
+                      child: Text(
+                        'Os resultados são obtidos através da nova fórmula proposta em 2013 pelo professor e pesquisador da Universidade de Oxford, Nick Trefethen:\nIMC = 1,3 x m / h ^ 2,5',
+                        style: kTextLabel,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                     Text(
                       resultText,
-                      style: kResultText,
+                      style: TextStyle(
+                          color: resultColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30.0),
                     ),
-                    Text(
-                      bmiResult,
-                      style: kBMINumber,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: <Widget>[
+                        Text(
+                          bmiResult,
+                          style: kBMINumber,
+                        ),
+                        Text(
+                          'IMC',
+                          style: kTextLabel,
+                        ),
+                      ],
                     ),
-                    Text(
-                      resultTip,
-                      style: kResultTip,
-                      textAlign: TextAlign.center,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: Text(
+                        resultTip,
+                        style: kResultTip,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ],
                 ),
