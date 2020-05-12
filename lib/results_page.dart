@@ -4,6 +4,14 @@ import 'package:bmi_calculator/default_card.dart';
 import 'package:flutter/material.dart';
 
 class ResultsPage extends StatelessWidget {
+  ResultsPage({@required this.bmiResult,
+    @required this.resultText,
+    @required this.resultTip});
+
+  final String bmiResult;
+  final String resultText;
+  final String resultTip;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,22 +38,29 @@ class ResultsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'Teste',
+                      resultText,
                       style: kResultText,
                     ),
                     Text(
-                      '18.3',
+                      bmiResult,
                       style: kBMINumber,
                     ),
-                    Text('Result', style: kResultTip,),
+                    Text(
+                      resultTip,
+                      style: kResultTip,
+                      textAlign: TextAlign.center,
+                    ),
                   ],
                 ),
               ),
             ),
             Expanded(
-              child: BottomButton(text: 'CALCULAR NOVAMENTE', onTap: () {
-                Navigator.pop(context);
-              },),
+              child: BottomButton(
+                text: 'CALCULAR NOVAMENTE',
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
             )
           ],
         ),
