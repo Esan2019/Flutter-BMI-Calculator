@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+const String obeseTip = 'Sua situação é grave. Recomendamos consultar um endocrinologista.';
+
 enum Result {
   severelyUnderweight,
   underweight,
@@ -45,28 +47,43 @@ class Calculator {
       return 'Obesidade grau I';
     } else if (_bmi >= 35.0 && _bmi <= 39.99) {
       result = Result.obeseClass2;
-      return 'Obesidade grau II';
+      return 'Obesidade grau II (severa)';
     } else {
       result = Result.obeseClass3;
-      return 'Obesidade grau III';
+      return 'Obesidade grau III (mórbida)';
     }
   }
 
-  //TODO: Add more colors
   Color getResultColor() {
-    if (result == Result.severelyUnderweight) {
+    if (result == Result.severelyUnderweight || result == Result.obeseClass1) {
       return Color(0xFFFF0008);
     }
+    if (result == Result.underweight || result == Result.overweight) {
+      return Color(0xFFFBFF00);
+    }
+    if (result == Result.normal) {
+      return Color(0xFF00FF00);
+    }
+    else {
+      return Color(0xFFFF00C3);
+    }
   }
-
-  //TODO: Add more tips
+  
   String getTip() {
     if (result == Result.severelyUnderweight) {
       return 'Especialistas do Hospital de St. Michael\'s, no Canadá, afirmam que estar abaixo do peso apresenta mais riscos à saúde do que estar acima do peso. Para se obter um ganho de peso saudável, alimentos ricos em calorias não são a escolha correta, mas sim, aqueles com uma quantidade calórica equilibrada ricos em vitamina, proteína e principalmente carboidratos que contribuem no aumento de massa muscular, e que possuem pequenas taxas de gorduras trans e saturada.';
-    } else if (_bmi > 18.5) {
-      return 'Você tem um peso normal';
-    } else {
-      return 'Você tem um peso abaixo do normal';
+    }
+    if (result == Result.underweight) {
+      return 'O melhor caminho para ganhar peso de forma saudável é aliar a prática de exercícios físicos que contribuam para o ganho de massa muscular (como musculação e crossfit), e uma alimentação balanceada (alimentos naturais e frescos, como cereais, frutas e legumes).';
+    }
+    if (result == Result.normal) {
+      return 'Parabéns pelo ótimo trabalho! Lembre-se que para manter o peso ideal é importante manter uma dieta balanceada (não basta apenas alimentos corretos, deve-ser levar em conta também as quantidades corretas).';
+    }
+    if (result == Result.overweight) {
+      return 'O melhor caminho para perder peso de forma saudável é aliar a prática de exercícios físicos que queimam calorias (como corrida e natação), e uma dieta balanceada. Não é necessário (e nem saudável) deixar de se alimentar durante longos períodos de tempo no intuito de emagrecer. Você apenas precisa comer os alimentos certos, na quantidade certa.';
+    }
+    else {
+      return obeseTip;
     }
   }
 }
