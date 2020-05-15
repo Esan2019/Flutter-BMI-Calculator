@@ -4,10 +4,11 @@ import 'package:bmi_calculator/default_card.dart';
 import 'package:flutter/material.dart';
 
 class ResultsPage extends StatelessWidget {
-  ResultsPage({@required this.bmiResult,
-    @required this.resultText,
-    @required this.resultTip,
-    @required this.resultColor});
+  ResultsPage(
+      {@required this.bmiResult,
+      @required this.resultText,
+      @required this.resultTip,
+      @required this.resultColor});
 
   final String bmiResult;
   final String resultText;

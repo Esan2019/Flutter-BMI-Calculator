@@ -2,7 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-const String obeseTip = 'Sua situação é grave. Recomendamos consultar um endocrinologista.';
+const String obeseTip =
+    'Sua situação é grave. Recomendamos consultar um endocrinologista.';
 
 enum Result {
   severelyUnderweight,
@@ -63,12 +64,11 @@ class Calculator {
     }
     if (result == Result.normal) {
       return Color(0xFF00FF00);
-    }
-    else {
+    } else {
       return Color(0xFFFF00C3);
     }
   }
-  
+
   String getTip() {
     if (result == Result.severelyUnderweight) {
       return 'Especialistas do Hospital de St. Michael\'s, no Canadá, afirmam que estar abaixo do peso apresenta mais riscos à saúde do que estar acima do peso. Para se obter um ganho de peso saudável, alimentos ricos em calorias não são a escolha correta, mas sim, aqueles com uma quantidade calórica equilibrada ricos em vitamina, proteína e principalmente carboidratos que contribuem no aumento de massa muscular, e que possuem pequenas taxas de gorduras trans e saturada.';
@@ -81,8 +81,7 @@ class Calculator {
     }
     if (result == Result.overweight) {
       return 'O melhor caminho para perder peso de forma saudável é aliar a prática de exercícios físicos que queimam calorias (como corrida e natação), e uma dieta balanceada. Não é necessário (e nem saudável) deixar de se alimentar durante longos períodos de tempo no intuito de emagrecer. Você apenas precisa comer os alimentos certos, na quantidade certa.';
-    }
-    else {
+    } else {
       return obeseTip;
     }
   }
