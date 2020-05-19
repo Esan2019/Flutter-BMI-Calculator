@@ -1,10 +1,13 @@
 import 'package:bmi_calculator/results_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'input_page.dart';
 
 void main() {
-  runApp(BmiCalculator());
+  /*await SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  */runApp(BmiCalculator());
 }
 
 class BmiCalculator extends StatelessWidget {

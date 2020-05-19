@@ -17,9 +17,9 @@ class ResultsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -36,59 +36,67 @@ class ResultsPage extends StatelessWidget {
             Expanded(
               flex: 6,
               child: DefaultCard(
-                cardChild: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                cardChild: ListView(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left: 4.0, right: 4.0),
-                      child: Text(
-                        'Os resultados são obtidos através da nova fórmula proposta em 2013 pelo professor e pesquisador da Universidade de Oxford, Nick Trefethen:\nIMC = 1,3 x m / h ^ 2,5',
-                        style: kTextLabel,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    Text(
-                      resultText,
-                      style: TextStyle(
-                          color: resultColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30.0),
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      textBaseline: TextBaseline.alphabetic,
-                      children: <Widget>[
-                        Text(
-                          bmiResult,
-                          style: kBMINumber,
-                        ),
-                        Text(
-                          'IMC',
-                          style: kTextLabel,
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                      child: Text(
-                        resultTip,
-                        style: kResultTip,
-                        textAlign: TextAlign.center,
+                      padding: EdgeInsets.all(10.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            resultText,
+                            style: TextStyle(
+                                color: resultColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30.0),
+                          ),
+                          SizedBox(
+                            height: 15.0,
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: <Widget>[
+                              Text(
+                                bmiResult,
+                                style: kBMINumber,
+                              ),
+                              Text(
+                                'IMC',
+                                style: kTextLabel,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 15.0,
+                          ),
+                          Text(
+                            resultTip,
+                            style: kResultTip,
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          Text(
+                            'Aviso: os resultados são obtidos através da nova fórmula proposta em 2013 pelo professor e pesquisador da Universidade de Oxford, Nick Trefethen:\nIMC = 1,3 x m / h ^ 2,5',
+                            style: kTextLabel,
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-            Expanded(
-              child: BottomButton(
-                text: 'CALCULAR NOVAMENTE',
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
+            BottomButton(
+              text: 'CALCULAR NOVAMENTE',
+              onTap: () {
+                Navigator.pop(context);
+              },
             )
           ],
         ),

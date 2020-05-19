@@ -18,12 +18,6 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  @override
-  Future<void> initState() async {
-    super.initState();
-    await SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  }
 
   Gender selectedGender = Gender.male;
   int height = 160;
@@ -32,186 +26,185 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: DefaultCard(
-                    onPress: () {
-                      setState(() {
-                        selectedGender = Gender.male;
-                      });
-                    },
-                    cardChild: IconContent(FontAwesomeIcons.mars, 'MASCULINO'),
-                    color: selectedGender == Gender.male
-                        ? kActiveCardColor
-                        : kInactiveCardColor,
-                  ),
+    return SafeArea(
+      child: Scaffold(
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Expanded(
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: DefaultCard(
+                        onPress: () {
+                          setState(() {
+                            selectedGender = Gender.male;
+                          });
+                        },
+                        cardChild: IconContent(FontAwesomeIcons.mars, 'MASCULINO'),
+                        color: selectedGender == Gender.male
+                            ? kActiveCardColor
+                            : kInactiveCardColor,
+                      ),
+                    ),
+                    Expanded(
+                      child: DefaultCard(
+                        onPress: () {
+                          setState(() {
+                            selectedGender = Gender.female;
+                          });
+                        },
+                        cardChild: IconContent(FontAwesomeIcons.venus, 'FEMININO'),
+                        color: selectedGender == Gender.female
+                            ? kActiveCardColor
+                            : kInactiveCardColor,
+                      ),
+                    )
+                  ],
                 ),
-                Expanded(
-                  child: DefaultCard(
-                    onPress: () {
-                      setState(() {
-                        selectedGender = Gender.female;
-                      });
-                    },
-                    cardChild: IconContent(FontAwesomeIcons.venus, 'FEMININO'),
-                    color: selectedGender == Gender.female
-                        ? kActiveCardColor
-                        : kInactiveCardColor,
-                  ),
-                )
-              ],
-            ),
-          ),
-          Expanded(
-            child: DefaultCard(
-              cardChild: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'ALTURA',
-                    style: kTextLabel,
-                  ),
-                  Row(
-                    textBaseline: TextBaseline.alphabetic,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
+              ),
+              Expanded(
+                child: DefaultCard(
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Text(
-                        height.toString(),
-                        style: kNumberLabel,
-                      ),
-                      SizedBox(
-                        width: 3.0,
-                      ),
-                      Text(
-                        'cm',
+                        'ALTURA',
                         style: kTextLabel,
                       ),
+                      Row(
+                        textBaseline: TextBaseline.alphabetic,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        children: <Widget>[
+                          Text(
+                            height.toString(),
+                            style: kNumberLabel,
+                          ),
+                          SizedBox(
+                            width: 3.0,
+                          ),
+                          Text(
+                            'cm',
+                            style: kTextLabel,
+                          ),
+                        ],
+                      ),
+                      Slider(
+                        activeColor: Colors.tealAccent,
+                        inactiveColor: Colors.teal[600],
+                        min: 30.0,
+                        max: 300.0,
+                        value: height.toDouble(),
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.toInt();
+                          });
+                        },
+                      )
                     ],
                   ),
-                  Slider(
-                    activeColor: Colors.tealAccent,
-                    inactiveColor: Colors.teal[600],
-                    min: 30.0,
-                    max: 300.0,
-                    value: height.toDouble(),
-                    onChanged: (double newValue) {
-                      setState(() {
-                        height = newValue.toInt();
-                      });
-                    },
-                  )
-                ],
-              ),
-            ),
-          ),
-          Expanded(
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: DefaultCard(
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'PESO',
-                          style: kTextLabel,
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.baseline,
-                          textBaseline: TextBaseline.alphabetic,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              weight.toString(),
-                              style: kNumberLabel,
-                            ),
-                            SizedBox(width: 3.0),
-                            Text(
-                              'KG',
-                              style: kTextLabel,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        SelectorsRow(
-                          onPressAdd: () {
-                            setState(() {
-                              weight++;
-                            });
-                          },
-                          onPressRemove: () {
-                            setState(() {
-                              weight--;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  ),
                 ),
-                Expanded(
-                  child: DefaultCard(
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'IDADE',
-                          style: kTextLabel,
+              ),
+              Expanded(
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: DefaultCard(
+                        cardChild: Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                'PESO',
+                                style: kTextLabel,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.baseline,
+                                textBaseline: TextBaseline.alphabetic,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    weight.toString(),
+                                    style: kNumberLabel,
+                                  ),
+                                  SizedBox(width: 3.0),
+                                  Text(
+                                    'KG',
+                                    style: kTextLabel,
+                                  ),
+                                ],
+                              ),
+                              SelectorsRow(
+                                onPressAdd: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                },
+                                onPressRemove: () {
+                                  setState(() {
+                                    weight--;
+                                  });
+                                },
+                              )
+                            ],
+                          ),
                         ),
-                        Text(
-                          age.toString(),
-                          style: kNumberLabel,
-                        ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        SelectorsRow(
-                          onPressRemove: () {
-                            setState(() {
-                              age--;
-                            });
-                          },
-                          onPressAdd: () {
-                            setState(() {
-                              age++;
-                            });
-                          },
-                        )
-                      ],
+                      ),
                     ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          BottomButton(
-            text: 'CALCULAR',
-            onTap: () {
-              Calculator calc = Calculator(height: height, weight: weight);
+                    Expanded(
+                      child: DefaultCard(
+                        cardChild: Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                'IDADE',
+                                style: kTextLabel,
+                              ),
+                              Text(
+                                age.toString(),
+                                style: kNumberLabel,
+                              ),
+                              SelectorsRow(
+                                onPressRemove: () {
+                                  setState(() {
+                                    age--;
+                                  });
+                                },
+                                onPressAdd: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              BottomButton(
+                text: 'CALCULAR',
+                onTap: () {
+                  Calculator calc = Calculator(height: height, weight: weight);
 
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ResultsPage(
-                            bmiResult: calc.calculateBMI(),
-                            resultText: calc.getResult(),
-                            resultTip: calc.getTip(),
-                            resultColor: calc.getResultColor(),
-                          )));
-            },
-          )
-        ],
-      ),
-    ));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ResultsPage(
+                                bmiResult: calc.calculateBMI(),
+                                resultText: calc.getResult(),
+                                resultTip: calc.getTip(),
+                                resultColor: calc.getResultColor(),
+                              )));
+                },
+              )
+            ],
+          )),
+    );
   }
 }

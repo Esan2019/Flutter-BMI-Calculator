@@ -10,21 +10,23 @@ class SelectorsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        RoundIconButton(
-          child: Icons.add,
-          onTap: onPressAdd,
-        ),
-        SizedBox(
-          width: 10.0,
-        ),
-        RoundIconButton(
-          child: Icons.remove,
-          onTap: onPressRemove,
-        )
-      ],
+    return Expanded(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          RoundIconButton(
+            child: Icons.add,
+            onTap: onPressAdd,
+          ),
+          SizedBox(
+            width: 10.0,
+          ),
+          RoundIconButton(
+            child: Icons.remove,
+            onTap: onPressRemove,
+          )
+        ],
+      ),
     );
   }
 }

@@ -10,21 +10,25 @@ class IconContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Icon(
-          icon,
-          size: 80.0,
-        ),
-        SizedBox(
-          height: 25.0,
-        ),
-        Text(
-          text,
-          style: kTextLabel,
-        ),
-      ],
+    return Padding(
+      padding: EdgeInsets.all(10.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          LayoutBuilder(
+            builder: (context, constraints) {
+              return Icon(
+                icon,
+                size: constraints.maxWidth - 60.0,
+              );
+            },
+          ),
+          Text(
+            text,
+            style: kTextLabel,
+          ),
+        ],
+      ),
     );
   }
 }
