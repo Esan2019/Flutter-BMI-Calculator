@@ -5,9 +5,11 @@ import 'package:flutter/services.dart';
 import 'input_page.dart';
 
 void main() {
-  /*await SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  */runApp(BmiCalculator());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
+      .then((_) {
+    runApp(BmiCalculator());
+  });
 }
 
 class BmiCalculator extends StatelessWidget {
