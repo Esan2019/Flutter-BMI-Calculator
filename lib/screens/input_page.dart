@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:bmi_calculator/widgets/selectors_row.dart';
 import 'package:bmi_calculator/widgets/BottomButton.dart';
-import 'package:bmi_calculator/calculator.dart';
+import 'package:bmi_calculator/calculator/calculator.dart';
 import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/widgets/default_card.dart';
 import 'package:bmi_calculator/widgets/icon_content.dart';
