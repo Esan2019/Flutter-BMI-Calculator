@@ -1,11 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-import 'package:bmi_calculator/calculator/enums/results.dart';
+import 'package:bmi_calculator/calculator/results.dart';
 import 'package:bmi_calculator/calculator/tips.dart';
 
 class Calculator {
-  Result result;
+  Result _result;
 
   Calculator({this.weight, this.height});
 
@@ -16,42 +16,45 @@ class Calculator {
 
   String calculateBMI() {
     _bmi = 1.3 * weight / pow(height / 100, 2.5);
+    _result = getResult(_bmi);
     return _bmi.toStringAsFixed(2);
   }
 
-  String getResult() {
-    if (_bmi < 17.0) {
-      result = Result.SEVERELY_UNDERWEIGHT;
-      return 'Muito abaixo do peso';
-    } else if (_bmi >= 17 && _bmi <= 18.49) {
-      result = Result.UNDERWEIGHT;
-      return 'Abaixo do peso';
-    } else if (_bmi >= 18.50 && _bmi <= 24.99) {
-      result = Result.NORMAL;
-      return 'Peso normal';
-    } else if (_bmi >= 25 && _bmi <= 29.99) {
-      result = Result.OVERWEIGHT;
-      return 'Acima do peso';
-    } else if (_bmi >= 30.0 && _bmi <= 34.99) {
-      result = Result.OBESE_CLASS_1;
-      return 'Obesidade grau I';
-    } else if (_bmi >= 35.0 && _bmi <= 39.99) {
-      result = Result.OBESE_CLASS_2;
-      return 'Obesidade grau II (severa)';
-    } else {
-      result = Result.OBESE_CLASS_3;
-      return 'Obesidade grau III (mórbida)';
+  String calculateResult() {
+    switch (_result) {
+      case Result.SEVERELY_UNDERWEIGHT:
+        return 'Muito abaixo do peso';
+        break;
+      case Result.UNDERWEIGHT:
+        return 'Abaixo do peso';
+        break;
+      case Result.NORMAL:
+        return 'Peso normal';
+        break;
+      case Result.OVERWEIGHT:
+        return 'Acima do peso';
+        break;
+      case Result.OBESE_CLASS_1:
+        return 'Obesidade grau I';
+        break;
+      case Result.OBESE_CLASS_2:
+        return 'Obesidade grau II (severa)';
+        break;
+      case Result.OBESE_CLASS_3:
+        return 'Obesidade grau III (mórbida)';
+        break;
     }
   }
 
   Color getResultColor() {
-    if (result == Result.SEVERELY_UNDERWEIGHT || result == Result.OBESE_CLASS_1) {
+    if (_result == Result.SEVERELY_UNDERWEIGHT ||
+        _result == Result.OBESE_CLASS_1) {
       return Color(0xFFFF0008);
     }
-    if (result == Result.UNDERWEIGHT || result == Result.OVERWEIGHT) {
+    if (_result == Result.UNDERWEIGHT || _result == Result.OVERWEIGHT) {
       return Color(0xFFFBFF00);
     }
-    if (result == Result.NORMAL) {
+    if (_result == Result.NORMAL) {
       return Color(0xFF00FF00);
     } else {
       return Color(0xFFFF00C3);
@@ -59,16 +62,16 @@ class Calculator {
   }
 
   String getTip() {
-    if (result == Result.SEVERELY_UNDERWEIGHT) {
+    if (_result == Result.SEVERELY_UNDERWEIGHT) {
       return severelyUnderweightTips[getRange(severelyUnderweightTips)];
     }
-    if (result == Result.UNDERWEIGHT) {
+    if (_result == Result.UNDERWEIGHT) {
       return underweightTips[getRange(underweightTips)];
     }
-    if (result == Result.NORMAL) {
+    if (_result == Result.NORMAL) {
       return normalTips[getRange(normalTips)];
     }
-    if (result == Result.OVERWEIGHT) {
+    if (_result == Result.OVERWEIGHT) {
       return overweightTips[getRange(overweightTips)];
     } else {
       return obeseTips[getRange(obeseTips)];
