@@ -40,9 +40,8 @@ class Calculator {
       case Result.OBESE_CLASS_2:
         return 'Obesidade grau II (severa)';
         break;
-      case Result.OBESE_CLASS_3:
+      default:
         return 'Obesidade grau III (mórbida)';
-        break;
     }
   }
 

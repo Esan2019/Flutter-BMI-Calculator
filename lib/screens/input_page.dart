@@ -136,11 +136,13 @@ class _InputPageState extends State<InputPage> {
                           SelectorsRow(
                             onPressAdd: () {
                               setState(() {
+                                if (weight >= 0 && weight < 550)
                                 weight++;
                               });
                             },
                             onPressRemove: () {
                               setState(() {
+                                if (weight > 0 && weight <= 550)
                                 weight--;
                               });
                             },
@@ -168,11 +170,13 @@ class _InputPageState extends State<InputPage> {
                           SelectorsRow(
                             onPressRemove: () {
                               setState(() {
+                                if (age > 0 && age <= 150)
                                 age--;
                               });
                             },
                             onPressAdd: () {
                               setState(() {
+                                if (age >= 0 && age < 150)
                                 age++;
                               });
                             },
